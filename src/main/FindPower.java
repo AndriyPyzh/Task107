@@ -18,6 +18,7 @@ public class FindPower {
     public static int findK(int m) {
         if (m <= 1) {
             log.info("Wrong number");
+            return -1;
         }
 
         int k = 1;
@@ -27,11 +28,14 @@ public class FindPower {
         return k;
     }
 
-    public static void pressButton1(){
+    public static void pressButton1() {
         System.out.println("Input natural number m:");
         int m = Integer.parseInt(input.nextLine());
         System.out.print("Biggest k that 4^k < m is ");
-        System.out.println(findK(m)+"\n");
+        int k = findK(m);
+        if (k != -1) {
+            System.out.println(findK(m) + "\n");
+        }
     }
 
     public static void outputMenu() {
@@ -42,15 +46,17 @@ public class FindPower {
     public static void show() {
         String keyMenu;
         do {
+            System.out.println("Please, select menu point:");
             outputMenu();
-            System.out.println("Please, select menu point.");
+
             keyMenu = input.nextLine();
+
             if (keyMenu.equals("1")) {
                 pressButton1();
             } else if (!keyMenu.equals("2"))
                 log.info("Invalid input");
+
         } while (!keyMenu.equals("2"));
     }
-
 
 }
